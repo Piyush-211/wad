@@ -1,0 +1,93 @@
+index.html
+
+<!DOCTYPE html>
+<head>
+  <title>Register User</title>
+  <style>
+   
+    #registrationForm {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #f9f9f9;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <form id="registrationForm">
+    <h2>Register</h2>
+    <input type="text" id="name" placeholder="Name" required><br><br>
+    <input type="email" id="email" placeholder="Email" required><br><br>
+    <input type="password" id="password" placeholder="Password" required><br><br>
+    <button type="submit">Register</button><br><br>
+    <a href="users.html">View Registered Users</a>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+users.html
+
+<!DOCTYPE html>
+<head>
+  
+<title>Registered Users</title>
+</head>
+<body>
+  <h2>Registered Users</h2>
+  <ul id="userList"></ul>
+  <p><a href="index.html">Back to Registration</a></p>
+
+  <script>
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const list = document.getElementById('userList');
+
+    users.forEach(user => {
+      const li = document.createElement('li');
+      li.textContent = `${user.name} (${user.email})`;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
+
+
+/// script.js
+document.getElementById('registrationForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+  
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+  
+    const user = { name, email, password };
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    users.push(user);
+    localStorage.setItem('users', JSON.stringify(users));
+  
+    // Simulate AJAX POST (to fake API)
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Fake POST success:', data);
+        alert('User registered!');
+        document.getElementById('registrationForm').reset();
+      })
+      .catch(error => console.error('Error:', error));
+  });
+  
