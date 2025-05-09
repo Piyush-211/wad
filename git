@@ -15,3 +15,31 @@ git commit -m "Initial commit"
 git branch -M main
 git remote add origin https://github.com/YOUR-USERNAME/my-first-app.git
 git push -u origin main
+
+
+/////git remote remove origin
+git remote add origin https://github.com/Piyush-211/Demo.git
+
+
+//////For Ubuntu
+
+git --version
+
+sudo apt update
+sudo apt install git
+
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
+git config --list
+
+mkdir my-app
+cd my-app
+
+git init
+Create your application (e.g., a simple HTML, CSS, and JavaScript app or any other code you want).
+Save your files in the my-app directory.
+
+git remote add origin https://github.com/your-username/my-app.git
+git add .
+git commit -m "Initial commit with my application"
+git push -u origin master
