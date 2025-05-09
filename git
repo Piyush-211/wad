@@ -1,0 +1,17 @@
+mkdir my-first-app
+cd my-first-app
+echo "<h1>Hello, GitHub from Git Bash!</h1>" > index.html
+
+git init
+
+///Set your Git identity if it's your first time:
+
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+
+git add .
+git commit -m "Initial commit"
+
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/my-first-app.git
+git push -u origin main
