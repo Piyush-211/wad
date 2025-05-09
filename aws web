@@ -1,0 +1,30 @@
+amazon 
+
+security:
+http   
+
+ec2-user
+
+sudo su
+ yum update -y
+ yum install httpd -y
+ cd /var/www/html
+ create website : vi index.html
+:wq to save 
+ service httpd start
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Form</title>
+</head>
+<body>
+  <h2>Enter Your Name</h2>
+  <form>
+    <input type="text" name="username" placeholder="Your Name">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
